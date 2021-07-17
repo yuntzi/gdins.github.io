@@ -1,0 +1,49 @@
+(function() {
+  var host = window.location.hostname;
+  if (host === 'git.oschina.net') {
+    window.location.href = window.location.href.replace(host, 'gitee.com');
+  }
+})();
+
+$('document').ready(function() {
+  $.get('/login_state');
+})
+
+$('#projects-search').click(function() {
+  $('#projects-search-form').submit();
+});
+$('#projects-search-form').submit(function() {
+  query_name = $('#search_top-search-input').val();
+  if (query_name != undefined && $.trim(query_name).length < 1) {
+    $('#search_top-search-input').focus();
+    Flash.show("搜索关键字不能少于1个", 'error');
+    return false;
+  }
+})
+function force_mobile() {
+  current_url = window.location.href;
+  force_mobile_url = current_url.substr(0, current_url.indexOf('?')) + '?force_mobile=true';
+  location.href = force_mobile_url;
+}
+function update() {
+  var pageHeight = document.body.offsetHeight;
+  var $footer = $('#git-footer-main');
+  var $header = $('#git-header-nav').outerHeight();
+  var footerHeight = $footer.outerHeight();
+  var windowHeight = $(document).height() - footerHeight - $header
+  if ($footer.hasClass('fixed-bottom')) {
+    pageHeight += $footer.outerHeight();
+    if (pageHeight > $(window).height()) {
+      $footer.removeClass('fixed-bottom');
+    } else {
+      $('.container.error').css('height', windowHeight);
+    }
+  } else {
+    if (pageHeight < $(window).height()) {
+      $('.container.error').css('height', windowHeight);
+      $footer.addClass('fixed-bottom');
+    }
+  }
+};
+window.onload = update;
+window.onresize = update;
